@@ -5,9 +5,23 @@ import static org.junit.Assert.*;
 
 /**
  * Created by david on 2/16/2015.
+ *
+ * JUnit test harness for MyStack class
  */
 public class MyStackTest
 {
+  /**
+   * Tests the core functionality of MyStack.
+   *
+   * Specifically tests:
+   *  construction
+   *  initial state
+   *  push
+   *  peek
+   *  pop
+   *  isEmpty
+   *  getSize
+   */
   @Test
   public void TestMyStackCoreFunctionalityWorks()
   { //  create the stack
@@ -49,6 +63,9 @@ public class MyStackTest
     assertEquals(0, stack.getSize());
   }
 
+  /**
+   * Tests shallow copy of MyStack
+   */
   @Test
   public void TestMyStackShallowCopy()
   { //  create our stack
@@ -97,6 +114,10 @@ public class MyStackTest
     assertEquals(6, stack.getSize());
   }
 
+  /**
+   * Tests the deep copy clone of MyStack
+   * @throws CloneNotSupportedException
+   */
   @Test
   public void TestMyStackDeepCopy() throws CloneNotSupportedException
   { //  create our stack
