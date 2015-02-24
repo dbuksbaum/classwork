@@ -2,6 +2,9 @@ package org.buksbaum.module3;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Scanner;
 
 /**
  * Created by david on 2/16/2015.
@@ -35,6 +38,40 @@ public class WindChill
             (constant5 * (tempOutside * airVelocityRaised));
 
     //  TODO: verify that 6 is the right precision for all contexts. Might need to change this math
-    return new BigDecimal(result, new MathContext(6)).doubleValue();
+    //return new BigDecimal(result, new MathContext(6)).doubleValue();
+    return result;
   }
+
+
+  public long CalculateNWS(double tempOutside, double airVelocity)
+  {
+    return Math.round(Calculate(tempOutside, airVelocity));
+  }
+
+  public static void main(String[] args)
+  {
+    //  create a windchill object
+    WindChill windChill = new WindChill();
+
+    //  create a scanner object
+    Scanner input = new Scanner(System.in);
+
+    //  create a number formatter
+    NumberFormat formatter = new DecimalFormat("#0.00000");
+
+    //  get the temperature
+    System.out.print("Enter the temperature in Fahrenheit between -58F and 41F: ");
+    double temp = input.nextDouble();
+
+    //  get the temperature
+    System.out.print("Enter the wind speed (>= 2) in miles per hour: ");
+    double speed = input.nextDouble();
+
+    //  calculate the wind chill
+    double chill = windChill.Calculate(temp, speed);
+
+    //  display the result
+    System.out.println("The wind chill index is " + formatter.format(chill));
+  }
+
 }
