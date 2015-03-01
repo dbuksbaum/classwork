@@ -4,6 +4,7 @@ import java.util.Scanner; // contains the Scanner class
 
 /**
  * Created by david on 2/24/2015.
+ * Rectangle calculation class from the Data IO and Object Serialization Examples_Mod3 document
  */
 public class Rectangle
 {

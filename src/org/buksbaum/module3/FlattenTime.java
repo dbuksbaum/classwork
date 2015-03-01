@@ -6,9 +6,14 @@ import java.io.ObjectOutputStream;
 
 /**
  * Created by david on 2/24/2015.
+ * The FlattenTime class from the Data IO and Object Serialization Examples_Mod3 document
  */
 public class FlattenTime
 {
+  /**
+   * Main method that flattens time or serializes a PersistentTime object
+   * @param args Command line arguments - non expected
+   */
   public static void main(String [] args)
   {
     String filename = "time1.ser";
