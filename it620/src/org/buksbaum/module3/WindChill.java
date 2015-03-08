@@ -1,7 +1,5 @@
 package org.buksbaum.module3;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.InputMismatchException;
@@ -33,38 +31,6 @@ public class WindChill
   final static double constant4 = 0.16;
   final static double constant5 = 0.4275;
 
-  /**
-   * Calculate the wind chill using the formula from the National
-   * Weather Service
-   * @param tempOutside The fahrenheit temperature
-   * @param airVelocity The speed of the wind
-   * @return The wind chill
-   */
-  public double Calculate(double tempOutside, double airVelocity)
-  {
-    double airVelocityRaised = Math.pow(airVelocity,constant4);
-    double result = constant1 +
-            (constant2 * tempOutside) -
-            (constant3 * airVelocityRaised) +
-            (constant5 * (tempOutside * airVelocityRaised));
-
-    //  TODO: verify that 6 is the right precision for all contexts. Might need to change this math
-    //return new BigDecimal(result, new MathContext(6)).doubleValue();
-    return result;
-  }
-
-
-  /**
-   * Caculate the wind chill and round to a whole number to match the tables
-   * published by the Nation Weather Service
-   * @param tempOutside The fahrenheit temperature
-   * @param airVelocity The speed of the wind
-   * @return The wind chill
-   */
-  public long CalculateNWS(double tempOutside, double airVelocity)
-  {
-    return Math.round(Calculate(tempOutside, airVelocity));
-  }
 
   /**
    * The main method to run the wind chill test by getting the temperature and wind speed
@@ -119,7 +85,15 @@ public class WindChill
     }
 
     //  calculate the wind chill
-    double chill = windChill.Calculate(temp, speed);
+    double airVelocityRaised = Math.pow(speed,constant4);
+    double result = constant1 +
+            (constant2 * temp) -
+            (constant3 * airVelocityRaised) +
+            (constant5 * (temp * airVelocityRaised));
+
+    //  TODO: verify that 6 is the right precision for all contexts. Might need to change this math
+    //return new BigDecimal(result, new MathContext(6)).doubleValue();
+    double chill = result;
 
     //  display the result
     System.out.println("The wind chill index is " + formatter.format(chill));

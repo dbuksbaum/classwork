@@ -31,7 +31,15 @@ public class WindChillTest
     assertNotNull(windChill);
 
     //  NWS(5.3, 6) ==> -5.56707
-    double wc1 = windChill.Calculate(5.3, 6);
+    double airVelocityRaised = Math.pow((double) 6, WindChill.constant4);
+    double result = WindChill.constant1 +
+            (WindChill.constant2 * 5.3) -
+            (WindChill.constant3 * airVelocityRaised) +
+            (WindChill.constant5 * (5.3 * airVelocityRaised));
+
+    //  TODO: verify that 6 is the right precision for all contexts. Might need to change this math
+    //return new BigDecimal(result, new MathContext(6)).doubleValue();
+    double wc1 = result;
     //  test equal to 5 digits rounded
     assertEquals(-5.56707, wc1, 0.00009);
   }
@@ -48,7 +56,15 @@ public class WindChillTest
     assertNotNull(windChill);
 
     //  NWS(5.3, 6) ==> -5.56707
-    long wc1 = windChill.CalculateNWS(5.3, 6);
+    double airVelocityRaised = Math.pow((double) 6, WindChill.constant4);
+    double result = WindChill.constant1 +
+            (WindChill.constant2 * 5.3) -
+            (WindChill.constant3 * airVelocityRaised) +
+            (WindChill.constant5 * (5.3 * airVelocityRaised));
+
+    //  TODO: verify that 6 is the right precision for all contexts. Might need to change this math
+    //return new BigDecimal(result, new MathContext(6)).doubleValue();
+    long wc1 = Math.round(result);
     //  test equals
     assertEquals(-6, wc1);
   }
