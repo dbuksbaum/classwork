@@ -4,6 +4,7 @@ import java.util.Observable;
 
 /**
  * Created by david on 3/7/2015.
+ * WeatherData class to store weather data
  */
 public class WeatherData extends Observable
 {

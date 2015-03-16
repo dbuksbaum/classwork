@@ -2,6 +2,7 @@ package org.buksbaum.module5.ThreadTester;
 
 /**
  * Created by david on 3/7/2015.
+ * Code copied from SNHU IT-620 Module 5
  */
 public class ThreadTester
 {
@@ -21,7 +22,10 @@ public class ThreadTester
       }  // it in turn calls the object's run method IAW priority.
     }
     else
+    {
       System.out.println("Usage:  Summation <integer value>");
+      System.exit(-1);
+    }
 
     try
     { //  commented out sleep in order to see the effect of no thread synchronization

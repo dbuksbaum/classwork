@@ -5,6 +5,8 @@ import java.util.Observer;
 
 /**
  * Created by david on 3/7/2015.
+ * DisplayElement to display the WindChill calculated using the NWS
+ * formula used in Module 3.
  */
 public class WindChillDisplay implements Observer, DisplayElement
 {

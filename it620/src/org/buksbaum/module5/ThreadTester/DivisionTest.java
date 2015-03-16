@@ -2,6 +2,7 @@ package org.buksbaum.module5.ThreadTester;
 
 /**
  * Created by david on 3/7/2015.
+ * Code copied from SNHU IT-620 Module 5
  */
 public class DivisionTest{
   int x = 11;

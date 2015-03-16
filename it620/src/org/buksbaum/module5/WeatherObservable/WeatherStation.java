@@ -11,7 +11,7 @@ public class WeatherStation {
     StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
     ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
 
-    //  added windspeed variable
+    //  added windspeed parameter
     weatherData.setMeasurements(80, 65, 30.4f, 2);
     weatherData.setMeasurements(82, 70, 29.2f, 2);
     weatherData.setMeasurements(78, 90, 29.2f, 2);
