@@ -45,6 +45,7 @@ public class StarbuzzCoffee {
     beverage5 = new Whip(beverage5);
     System.out.println(beverage5.getDescription() + " $" + beverage5.cost());
 
+    //  DONT LOOK BELOW HERE UNTIL REVIEWING QUESTION 5!!!!
     //  House Blend + 2 Caramels + 1 Soy + 1 Whip
     Beverage beverage6 = new HouseBlend();
     //  our 2 caramels
