@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * Created by david on 3/22/2015.
+ * Concrete backing store using an ArrayList
  */
 public class InMemoryWeatherDataStore implements IWeatherDataStore
 {
