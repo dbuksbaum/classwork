@@ -22,5 +22,7 @@
     <orderEntry type="library" name="joda-time:joda-time:2.7" level="project" />
     <orderEntry type="library" name="com.jgoodies:jgoodies-forms:1.7.2" level="project" />
     <orderEntry type="library" name="com.jgoodies:jgoodies-looks:2.5.3" level="project" />
+    <orderEntry type="library" name="com.squareup.dagger:dagger:1.2.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="com.squareup.dagger:dagger-compiler:1.2.2" level="project" />
   </component>
 </module>
