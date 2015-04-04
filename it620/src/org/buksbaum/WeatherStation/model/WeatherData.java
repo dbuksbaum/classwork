@@ -202,4 +202,14 @@ public class WeatherData implements Comparable<WeatherData>
     //  excluded all null conditions, so now actually compare the results
     return getCaptureTime().compareTo(o.getCaptureTime());
   }
+
+  @Override
+  public String toString()
+  {
+    return "[" + captureTime + "]" +
+            " Temperature = " + temperature +
+            ", Pressure = " + pressure +
+            ", Humidity = " + humidity +
+            ", Wind Speed = " + windSpeed;
+  }
 }

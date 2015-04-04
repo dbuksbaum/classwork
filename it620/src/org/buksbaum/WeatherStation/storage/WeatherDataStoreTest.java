@@ -3,6 +3,8 @@ package org.buksbaum.WeatherStation.storage;
 import org.buksbaum.WeatherStation.model.WeatherData;
 import org.junit.Test;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -78,12 +80,15 @@ public abstract class WeatherDataStoreTest
     weatherDataStore.addWeatherData(new WeatherData(78, 29.2f, 90, 20));
     assertEquals(3, weatherDataStore.size());
 
-    List<WeatherData> allWeatherData = weatherDataStore.getAllWeatherData();
+    Collection<WeatherData> allWeatherData = weatherDataStore.getAllWeatherData();
     assertEquals(3, allWeatherData.size());
     //  test a sample of each to make sure they got returned in order
-    assertEquals(10, allWeatherData.get(0).getWindSpeed());
-    assertEquals(15, allWeatherData.get(1).getWindSpeed());
-    assertEquals(20, allWeatherData.get(2).getWindSpeed());
+    Iterator<WeatherData> iterator = allWeatherData.iterator();
+    assertEquals(10, iterator.next().getWindSpeed());
+    assertEquals(15, iterator.next().getWindSpeed());
+    assertEquals(20, iterator.next().getWindSpeed());
+
+    assertEquals(false, iterator.hasNext());
   }
 
   @Test

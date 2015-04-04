@@ -1,18 +1,18 @@
 package org.buksbaum.WeatherStation;
 
 import dagger.Module;
-import org.buksbaum.WeatherStation.view.MainForm;
-import org.buksbaum.WeatherStation.view.ViewModules;
+import dagger.Provides;
+import org.buksbaum.WeatherStation.controllers.ControllerModule;
+import org.buksbaum.WeatherStation.controllers.IMainController;
+import org.buksbaum.WeatherStation.controllers.WeatherAppController;
+
+import javax.inject.Singleton;
 
 /**
  * Created by david on 4/1/2015.
  */
-@Module
-        (
-                injects = WeatherApp.class,
-                includes = ViewModules.class
-        )
+//  this module only imports the startup class and the controller module it needs
+@Module(library = false, complete = true, injects = {WeatherApp.class}, includes = {ControllerModule.class})
 class WeatherStationModule
 {
-
 }

@@ -1,9 +1,11 @@
 package org.buksbaum.WeatherStation.storage;
 
+import org.buksbaum.WeatherStation.model.TemperatureStatistics;
 import org.buksbaum.WeatherStation.model.WeatherData;
 import org.joda.time.DateTime;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Vector;
 
 /**
  * Created by david on 3/22/2015.
@@ -33,10 +35,19 @@ public interface IWeatherDataStore
   public WeatherData getCurrentWeatherData();
 
   /**
+   * Gets up to the last two pressure values, if they exist.
+   * The current pressure value will be in index 0, and the previous will be in index 1
+   * @return an array of double with 0, 1, or 2 values
+   */
+  public double[] getLastTwoPressureValues();
+
+  public TemperatureStatistics getTemperatureStatistics();
+
+  /**
    * Gets all weather data in the data store
    * @return list of weather data objects
    */
-  public List<WeatherData> getAllWeatherData();
+  public Collection<WeatherData> getAllWeatherData();
   //public List<WeatherData> getWeatherDataInRange(DateTime start, DateTime end);
 
   /**
