@@ -2,129 +2,174 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.buksbaum.WeatherStation.view.MainForm">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="16" y="22" width="504" height="398"/>
+      <xy x="16" y="22" width="800" height="500"/>
     </constraints>
-    <properties/>
+    <properties>
+      <minimumSize width="800" height="500"/>
+    </properties>
     <border type="none"/>
     <children>
-      <grid id="9691c" layout-manager="FormLayout">
+      <component id="eff47" class="javax.swing.JLabel" binding="statusLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <font swing-font="ProgressBar.font"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <grid id="34cf1" layout-manager="FormLayout">
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
         <rowspec value="center:d:grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
         <colspec value="fill:d:grow"/>
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
         <children>
-          <splitpane id="732a7">
+          <grid id="b64a2" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="200" height="200"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Current Conditions"/>
+            <children>
+              <component id="5898" class="javax.swing.JLabel" binding="currentConditionsLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="No Data"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="f7612" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Forecast"/>
+            <children>
+              <component id="5ac38" class="javax.swing.JLabel" binding="forecastLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="No Data"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="3fa34" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Statistics"/>
+            <children>
+              <component id="3ee9c" class="javax.swing.JLabel" binding="statisticsLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="No Data"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="c2df3" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Heat Index"/>
+            <children>
+              <component id="90513" class="javax.swing.JLabel" binding="heatIndexLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="No Data"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="c9c34" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Wind Chill Index"/>
+            <children>
+              <component id="ea7dc" class="javax.swing.JLabel" binding="windChillIndexLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="No Data"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="79e14" layout-manager="FormLayout">
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties/>
-            <border type="none"/>
+            <border type="none" title="History"/>
             <children>
-              <grid id="4b23e" binding="contentPanel" layout-manager="FormLayout">
-                <rowspec value="center:d:grow"/>
-                <colspec value="fill:d:grow"/>
+              <component id="5662" class="javax.swing.JList" binding="historyList">
                 <constraints>
-                  <splitpane position="right"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="100" height="100"/>
-                  <preferredSize width="400" height="100"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="2ae20" layout-manager="FormLayout">
-                <rowspec value="center:d:noGrow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:d:grow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <colspec value="fill:d:noGrow"/>
-                <constraints>
-                  <splitpane position="left"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                  <forms defaultalign-vert="false"/>
                 </constraints>
                 <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="35ba" class="javax.swing.JButton" binding="currentConditionsButton">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="Current Conditions"/>
-                    </properties>
-                  </component>
-                  <component id="d0bbf" class="javax.swing.JButton" binding="forecastButton">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="Forecast"/>
-                    </properties>
-                  </component>
-                  <component id="c4e8f" class="javax.swing.JButton" binding="statisticsButton">
-                    <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="Statistics"/>
-                    </properties>
-                  </component>
-                  <component id="dca6d" class="javax.swing.JButton" binding="heatIndexButton">
-                    <constraints>
-                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="Heat Index"/>
-                    </properties>
-                  </component>
-                  <component id="144bb" class="javax.swing.JButton" binding="historyButton">
-                    <constraints>
-                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="History"/>
-                    </properties>
-                  </component>
-                  <component id="78f01" class="javax.swing.JSeparator">
-                    <constraints>
-                      <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                    </constraints>
-                    <properties>
-                      <orientation value="0"/>
-                    </properties>
-                  </component>
-                  <component id="9ed0e" class="javax.swing.JButton" binding="updateButton">
-                    <constraints>
-                      <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties>
-                      <text value="Update"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
+              </component>
             </children>
-          </splitpane>
+          </grid>
+          <component id="9ed0e" class="javax.swing.JButton" binding="updateButton">
+            <constraints>
+              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Update"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>
