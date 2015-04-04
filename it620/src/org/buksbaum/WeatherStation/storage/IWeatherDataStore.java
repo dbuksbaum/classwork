@@ -2,10 +2,8 @@ package org.buksbaum.WeatherStation.storage;
 
 import org.buksbaum.WeatherStation.model.TemperatureStatistics;
 import org.buksbaum.WeatherStation.model.WeatherData;
-import org.joda.time.DateTime;
 
 import java.util.Collection;
-import java.util.Vector;
 
 /**
  * Created by david on 3/22/2015.
@@ -41,6 +39,10 @@ public interface IWeatherDataStore
    */
   public double[] getLastTwoPressureValues();
 
+  /**
+   * Gets the temperature statistics if they exist.
+   * @return null if no statistics, or the temperature statistics
+   */
   public TemperatureStatistics getTemperatureStatistics();
 
   /**

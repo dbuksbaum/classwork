@@ -1,13 +1,12 @@
 package org.buksbaum.WeatherStation.storage;
 
+import org.buksbaum.WeatherStation.model.TemperatureStatistics;
 import org.buksbaum.WeatherStation.model.WeatherData;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by david on 3/22/2015.
@@ -18,7 +17,7 @@ public class MySqlWeatherDataStore implements IWeatherDataStore
   private final String connectionString;
   private final DateTimeFormatter dateTimeFormatter = ISODateTimeFormat.dateTime();
 
-  public MySqlWeatherDataStore() throws SQLException
+  public MySqlWeatherDataStore()
   {
     connectionString = "jdbc:mysql://localhost/finalweatherdata?user=root&password=";
   }
@@ -124,7 +123,7 @@ public class MySqlWeatherDataStore implements IWeatherDataStore
       Statement stmt = connection.createStatement();
 
       // Execute SQL and get results from the executed SQL:
-      ResultSet results = stmt.executeQuery("SELECT capture_time, temperature, pressure, humidity, wind_speed FROM finalweatherdata.weather_data WHERE capture_time=(SELECT MAX(capture_time) FROM weather_data);");
+      ResultSet results = stmt.executeQuery("SELECT capture_time, temperature, pressure, humidity, wind_speed FROM finalweatherdata.weather_data WHERE capture_time=(SELECT MAX(capture_time) FROM weather_data) LIMIT 1;");
 
       //  move to the first result
       if(!results.next())
@@ -147,12 +146,89 @@ public class MySqlWeatherDataStore implements IWeatherDataStore
   }
 
   /**
+   * Gets up to the last two pressure values, if they exist.
+   * The current pressure value will be in index 0, and the previous will be in index 1
+   *
+   * @return an array of double with 0, 1, or 2 values
+   */
+  @Override
+  public double[] getLastTwoPressureValues()
+  {
+    try
+    { // Establish a connection to a given database URL:
+      Connection connection = DriverManager.getConnection(connectionString);
+
+      //Create a statement object for sending SQL statements to the database
+      Statement stmt = connection.createStatement();
+
+      // Execute SQL and get results from the executed SQL:
+      ResultSet results = stmt.executeQuery("SELECT pressure FROM finalweatherdata.weather_data ORDER BY capture_time DESC LIMIT 2;");
+
+      //  move to the first result
+      if(!results.next())
+        return null; // no current data
+
+      double currentPressure = results.getDouble(1);
+
+      //  move to the second result
+      if(!results.next())
+      { //  only 1 result, so return the only pressure value
+        return new double[]{currentPressure};
+      }
+
+      double previousPressure = results.getDouble(1);
+
+      //  return the 2 pressure values
+      return new double[] { currentPressure, previousPressure };
+    }
+    catch(SQLException exception)
+    { //  if we fail, just return
+      exception.printStackTrace();
+      return null;
+    }
+  }
+
+  /**
+   * Gets the temperature statistics if they exist.
+   * @return null if no statistics, or the temperature statistics
+   */
+  @Override
+  public TemperatureStatistics getTemperatureStatistics()
+  {
+    try
+    { // Establish a connection to a given database URL:
+      Connection connection = DriverManager.getConnection(connectionString);
+
+      //Create a statement object for sending SQL statements to the database
+      Statement stmt = connection.createStatement();
+
+      // Execute SQL and get results from the executed SQL:
+      ResultSet results = stmt.executeQuery("SELECT MAX(temperature), MIN(temperature), AVG(temperature) FROM weather_data;");
+
+      //  move to the first result
+      if(!results.next())
+        return null; // no current data
+
+      //  since the database did the math, just extract the values and construct the stats
+      TemperatureStatistics temperatureStatistics = new TemperatureStatistics(results.getDouble(1), results.getDouble(2), results.getDouble(3));
+
+      //  return already
+      return temperatureStatistics;
+    }
+    catch(SQLException exception)
+    { //  if we fail, just return
+      exception.printStackTrace();
+      return null;
+    }
+  }
+
+  /**
    * Gets all weather data in the data store
    *
    * @return list of weather data objects
    */
   @Override
-  public List<WeatherData> getAllWeatherData()
+  public Collection<WeatherData> getAllWeatherData()
   {
     ArrayList<WeatherData> weatherDataArrayList = new ArrayList<WeatherData>();
 

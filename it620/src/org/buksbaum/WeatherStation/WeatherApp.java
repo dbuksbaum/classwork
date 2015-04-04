@@ -1,20 +1,22 @@
 package org.buksbaum.WeatherStation;
 
 import dagger.ObjectGraph;
-//import org.buksbaum.WeatherStation.view.MainForm;
 import org.buksbaum.WeatherStation.controllers.IMainController;
 
 import javax.inject.Inject;
 
 /**
  * Created by david on 4/1/2015.
+ * The startup class for the Weather Station Application.
+ *
+ * This class derives from Runnable, not to be used by threading, but to use the exposed run method.
+ *
+ * This class initializes the Dagger Object Graph, locates the root controller for this application, and
+ * starts the application. This class is therefore nothing more than the entry point that proxies
+ * control over to the root controller.
  */
 public class WeatherApp implements Runnable
 {
-  // our root window gets injected
-  //@Inject
-  //MainForm mainForm;
-
   @Inject
   IMainController mainController;
 
@@ -29,14 +31,6 @@ public class WeatherApp implements Runnable
     weatherApp.run();
   }
 
-/*
-  @Inject
-  public WeatherApp(IMainController controller)
-  {
-    mainController = controller;
-  }
-*/
-
   /**
    * When an object implementing interface <code>Runnable</code> is used
    * to create a thread, starting the thread causes the object's
@@ -50,9 +44,8 @@ public class WeatherApp implements Runnable
    */
   @Override
   public void run()
-  {
+  { //  starts the main controller
     mainController.run();
-    //mainForm.ShowTheForm();
   }
 }
 
