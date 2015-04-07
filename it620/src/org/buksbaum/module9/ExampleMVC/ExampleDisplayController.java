@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 /**
  * Created by david on 4/5/2015.
+ *
+ * Given how much intimate knowledge is shared between views, models, and controllers in this example,
+ * I chose to create a new controller for the ExampleView
  */
 public class ExampleDisplayController implements ActionListener
 {
@@ -16,12 +19,21 @@ public class ExampleDisplayController implements ActionListener
   private ExampleModel model;
   private ExampleDisplayView view;
 
+  /**
+   * Construct our controller with a model and view
+   * @param model the model
+   * @param view the view
+   */
   public ExampleDisplayController(ExampleModel model, ExampleDisplayView view)
   {
     this.model = model;
     this.view = view;
   }
 
+  /**
+   * The listener for events.
+   * @param e the event
+   */
   public void actionPerformed(ActionEvent e) {
     Object source = e.getSource();
     if (source == view.getLoadRef())
@@ -30,6 +42,9 @@ public class ExampleDisplayController implements ActionListener
     }
   }
 
+  /**
+   * Load all records from the database and tell the view about it
+   */
   private void loadAllRecords()
   {
     ArrayList<String> studentsArrayList = new ArrayList<String>();

@@ -13,8 +13,12 @@ public class ExampleDisplayView extends JPanel implements ExampleInterface {
   private JList allStudentsList;
   private ExampleDisplayController controller;
 
+  /**
+   * Constuct the view using the model
+   * @param model the model to bind to
+   */
   public ExampleDisplayView(ExampleModel model)
-  {
+  { //  create a controller that binds the model & view
     controller = new ExampleDisplayController (model, this);
     createGui();
   }
@@ -26,15 +30,23 @@ public class ExampleDisplayView extends JPanel implements ExampleInterface {
     JScrollPane scrollDisplay = new JScrollPane(exampleDetail);
     this.add(scrollDisplay, BorderLayout.CENTER);
 
+    //  we create a new panel to house our new magic
     JPanel allRecordsPanel = new JPanel();
+    //  make sure the panel is using a border layout
     allRecordsPanel.setLayout(new BorderLayout());
+    //  create our new button
     loadAllRecords = new JButton(LOADALL_BUTTON);
+    //  marry our button to the controller
     loadAllRecords.addActionListener(controller);
+    //  add the button to the panel
     allRecordsPanel.add(loadAllRecords, BorderLayout.NORTH);
 
+    //  create the history list
     allStudentsList = new JList();
+    //  add the history list to the panel
     allRecordsPanel.add(allStudentsList, BorderLayout.CENTER);
 
+    //  add our new panel after the original content
     this.add(allRecordsPanel, BorderLayout.AFTER_LAST_LINE);
   }
 
@@ -46,8 +58,12 @@ public class ExampleDisplayView extends JPanel implements ExampleInterface {
                                   + newId);
   }
 
+  /**
+   * Show the history to the world
+   * @param history student history
+   */
   public void setHistoryList(String[] history)
-  {
+  { //  update the student list
     allStudentsList.setListData(history);
   }
 

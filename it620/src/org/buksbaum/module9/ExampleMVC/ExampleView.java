@@ -12,6 +12,7 @@ public class ExampleView extends JPanel implements ExampleInterface {
   //private static final long serialVersionUID = 1L;
   private static final String SHOW_BUTTON = "Show";
   private static final String EXIT_BUTTON = "Exit";
+  //  save button text
   private static final String SAVE_BUTTON = "Save to Database";
   private static final String STUDENT_FIRST_NAME = "First Name  ";
   private static final String STUDENT_LAST_NAME = "Last Name  ";
@@ -25,6 +26,7 @@ public class ExampleView extends JPanel implements ExampleInterface {
   private JLabel firstNameLabel, lastNameLabel, courseLabel, idLabel;
   private JTextField firstName, lastName, course, id;
   private JButton display, exit;
+  //  the save record button
   private JButton saveRecord;
 
   public ExampleView(ExampleModel model) {
@@ -40,6 +42,7 @@ public class ExampleView extends JPanel implements ExampleInterface {
   public void createGui() {
     display = new JButton(SHOW_BUTTON);
     exit = new JButton(EXIT_BUTTON);
+    //  create our new save button
     saveRecord = new JButton(SAVE_BUTTON);
 
     firstNameLabel = new JLabel(STUDENT_FIRST_NAME);
@@ -77,10 +80,12 @@ public class ExampleView extends JPanel implements ExampleInterface {
 
     JPanel controlPanel = new JPanel();
     controlPanel.add(display);
+    //  add the save button between display and exit
     controlPanel.add(saveRecord);
     controlPanel.add(exit);
     display.addActionListener(controller);
     exit.addActionListener(new ExitHandler());
+    //  wire up the save button to the controller
     saveRecord.addActionListener(controller);
 
     setLayout(new BorderLayout());
@@ -116,6 +121,10 @@ public class ExampleView extends JPanel implements ExampleInterface {
     id.setText(newID);
   }
 
+  /**
+   * Get a reference to the save record button
+   * @return referece to the save record button
+   */
   public Object getSaveRef()
   {
     return saveRecord;
@@ -128,6 +137,10 @@ public class ExampleView extends JPanel implements ExampleInterface {
     }
   }
 
+  /**
+   * This is not the method you are looking for. Move along.
+   * @param history there is no history here. only the future!
+   */
   public void setHistoryList(String[] history)
   { //  nothing to do, so just ignore it
   }

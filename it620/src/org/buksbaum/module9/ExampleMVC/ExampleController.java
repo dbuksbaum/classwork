@@ -11,7 +11,7 @@ import java.sql.Statement;
  * Created by david on 4/5/2015.
  */
 public class ExampleController implements ActionListener
-{
+{ //  my connection string
   private static final String connectionString = "jdbc:mysql://localhost/test?user=root&password=";
   private ExampleModel model;
   private ExampleView view;
@@ -27,8 +27,9 @@ public class ExampleController implements ActionListener
     {
       updateModel();
     }
+    // i added this if check to see if the save button was pressed
     else if(source == view.getSaveRef())
-    {
+    { //  the save button was pressed, call the save record method
       saveRecord();
     }
   }
@@ -43,6 +44,9 @@ public class ExampleController implements ActionListener
             .getId());
   }
 
+  /**
+   * Saves the current data out to the MySQL database
+   */
   private void saveRecord()
   {
     try
